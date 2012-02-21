@@ -1,0 +1,14 @@
+{
+  "author": "Tim Caswell <tim@creationix.com>",
+  "name": "embedder",
+  "description": "A simple tool to combine several node modules into a single script.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/creationix/embedder.git"
+  },
+  "main": "embedder.js",
+  "engines": {
+    "node": "~0.6.0"
+  }
+}
