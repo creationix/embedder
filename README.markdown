@@ -10,9 +10,12 @@ The best way to explain this is to show a sample usage.  Suppose that I have a n
     var runInNewContext = require('vm').runInNewContext;
 
     embedder({
+      // Embed my direct dependency
+      "protocol": require.resolve("protocol"),
+      // And also it's dependency
+      "msgpack-js": require.resolve("msgpack-js"),
+      // And my main script
       "client": "./node_modules/client.js",
-      "protocol": "./node_modules/protocol.js",
-      "msgpack-js": "./node_modules/msgpack-js/msgpack.js",
     }, function (err, code) {
       if (err) throw err;
       code += "\nrequire('client');\n";
@@ -23,3 +26,5 @@ The best way to explain this is to show a sample usage.  Suppose that I have a n
         console: console
       }, "generated.js");
     });
+
+Note that I included my main script as a dependency and then bootstrapped it with a manual require line.  This isn't strictly required, but I find it cleaner.
